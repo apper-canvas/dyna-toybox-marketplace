@@ -1,0 +1,351 @@
+[
+  {
+    "Id": 1,
+    "name": "Rainbow Building Blocks Set",
+    "brand": "CreativeToys",
+    "price": 34.99,
+    "salePrice": null,
+    "description": "100-piece colorful building blocks set perfect for developing fine motor skills and creativity. Made from safe, non-toxic materials with smooth edges.",
+    "images": [
+      "https://images.unsplash.com/photo-1587654780291-39c9404d746b?w=800",
+      "https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?w=800",
+      "https://images.unsplash.com/photo-1558060370-d644479cb6f7?w=800"
+    ],
+    "ageMin": 3,
+    "ageMax": 8,
+    "category": "Building & Construction",
+    "subcategory": "Building Blocks",
+    "dimensions": {
+      "length": 12,
+      "width": 10,
+      "height": 8
+    },
+    "weight": 2.5,
+    "material": "BPA-free plastic",
+    "stockQuantity": 45,
+    "isFeatured": true,
+    "sellerId": "seller1",
+    "rating": 4.8,
+    "reviewCount": 156,
+    "createdAt": "2024-01-15T10:30:00Z"
+  },
+  {
+    "Id": 2,
+    "name": "Plush Teddy Bear - Brown",
+    "brand": "CuddleBuddy",
+    "price": 24.99,
+    "salePrice": 19.99,
+    "description": "Soft and huggable teddy bear made with premium plush fabric. Perfect companion for bedtime and playtime. Machine washable.",
+    "images": [
+      "https://images.unsplash.com/photo-1551361415-69c87624334f?w=800",
+      "https://images.unsplash.com/photo-1530325553241-4f6e7690cf36?w=800"
+    ],
+    "ageMin": 0,
+    "ageMax": 5,
+    "category": "Plush & Stuffed Animals",
+    "subcategory": "Teddy Bears",
+    "dimensions": {
+      "length": 14,
+      "width": 10,
+      "height": 8
+    },
+    "weight": 0.8,
+    "material": "Premium plush fabric",
+    "stockQuantity": 8,
+    "isFeatured": false,
+    "sellerId": "seller2",
+    "rating": 4.9,
+    "reviewCount": 203,
+    "createdAt": "2024-01-20T14:15:00Z"
+  },
+  {
+    "Id": 3,
+    "name": "STEM Robotics Kit",
+    "brand": "FutureTech",
+    "price": 79.99,
+    "salePrice": null,
+    "description": "Learn coding and robotics with this comprehensive kit. Build 5 different robot models and program them using the included app. Compatible with iOS and Android.",
+    "images": [
+      "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=800",
+      "https://images.unsplash.com/photo-1518770660439-4636190af475?w=800",
+      "https://images.unsplash.com/photo-1563770660941-20978e870e26?w=800"
+    ],
+    "ageMin": 8,
+    "ageMax": 14,
+    "category": "Educational & STEM Toys",
+    "subcategory": "Robotics",
+    "dimensions": {
+      "length": 16,
+      "width": 12,
+      "height": 4
+    },
+    "weight": 3.2,
+    "material": "Electronic components and plastic",
+    "stockQuantity": 23,
+    "isFeatured": true,
+    "sellerId": "seller3",
+    "rating": 4.7,
+    "reviewCount": 89,
+    "createdAt": "2024-02-01T09:00:00Z"
+  },
+  {
+    "Id": 4,
+    "name": "Princess Castle Playset",
+    "brand": "DreamWorld",
+    "price": 49.99,
+    "salePrice": 44.99,
+    "description": "Magical castle playset with 3 levels, spiral staircase, and furniture. Includes 4 mini figures and accessories. Opens for easy access to all rooms.",
+    "images": [
+      "https://images.unsplash.com/photo-1563291074-2bf8677ac0e5?w=800",
+      "https://images.unsplash.com/photo-1515488764276-beab7607c1e6?w=800"
+    ],
+    "ageMin": 3,
+    "ageMax": 8,
+    "category": "Dolls & Accessories",
+    "subcategory": "Dollhouses",
+    "dimensions": {
+      "length": 18,
+      "width": 12,
+      "height": 20
+    },
+    "weight": 4.5,
+    "material": "Durable plastic",
+    "stockQuantity": 15,
+    "isFeatured": true,
+    "sellerId": "seller1",
+    "rating": 4.6,
+    "reviewCount": 124,
+    "createdAt": "2024-01-25T11:45:00Z"
+  },
+  {
+    "Id": 5,
+    "name": "Remote Control Race Car",
+    "brand": "SpeedRacer",
+    "price": 39.99,
+    "salePrice": null,
+    "description": "High-speed remote control car with 2.4GHz technology. Reaches speeds up to 15 mph. Rechargeable battery included with 45 minutes of play time.",
+    "images": [
+      "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800",
+      "https://images.unsplash.com/photo-1552820728-8b83bb6b773f?w=800",
+      "https://images.unsplash.com/photo-1581235720704-06d3acfcb36f?w=800"
+    ],
+    "ageMin": 6,
+    "ageMax": 12,
+    "category": "Vehicles & Remote Control",
+    "subcategory": "RC Cars",
+    "dimensions": {
+      "length": 12,
+      "width": 6,
+      "height": 4
+    },
+    "weight": 1.2,
+    "material": "Plastic and metal",
+    "stockQuantity": 32,
+    "isFeatured": false,
+    "sellerId": "seller2",
+    "rating": 4.5,
+    "reviewCount": 78,
+    "createdAt": "2024-02-05T13:20:00Z"
+  },
+  {
+    "Id": 6,
+    "name": "Art & Craft Supply Kit",
+    "brand": "CreativeKids",
+    "price": 29.99,
+    "salePrice": null,
+    "description": "Complete art set with crayons, markers, colored pencils, paint, brushes, and paper. Over 150 pieces to spark creativity. Includes storage case.",
+    "images": [
+      "https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=800",
+      "https://images.unsplash.com/photo-1452860606245-08befc0ff44b?w=800"
+    ],
+    "ageMin": 5,
+    "ageMax": 12,
+    "category": "Arts & Crafts",
+    "subcategory": "Art Supplies",
+    "dimensions": {
+      "length": 14,
+      "width": 10,
+      "height": 3
+    },
+    "weight": 2.0,
+    "material": "Non-toxic art supplies",
+    "stockQuantity": 52,
+    "isFeatured": false,
+    "sellerId": "seller3",
+    "rating": 4.7,
+    "reviewCount": 145,
+    "createdAt": "2024-01-18T08:30:00Z"
+  },
+  {
+    "Id": 7,
+    "name": "Wooden Puzzle - Farm Animals",
+    "brand": "EcoToys",
+    "price": 16.99,
+    "salePrice": null,
+    "description": "Chunky wooden puzzle featuring 8 farm animals. Large pieces perfect for little hands. Made from sustainable wood with non-toxic paint.",
+    "images": [
+      "https://images.unsplash.com/photo-1566694271355-eb97e8d1b6c0?w=800"
+    ],
+    "ageMin": 2,
+    "ageMax": 5,
+    "category": "Board Games & Puzzles",
+    "subcategory": "Puzzles",
+    "dimensions": {
+      "length": 12,
+      "width": 9,
+      "height": 1
+    },
+    "weight": 0.9,
+    "material": "Sustainable wood",
+    "stockQuantity": 67,
+    "isFeatured": false,
+    "sellerId": "seller1",
+    "rating": 4.8,
+    "reviewCount": 92,
+    "createdAt": "2024-02-08T10:00:00Z"
+  },
+  {
+    "Id": 8,
+    "name": "Superhero Action Figure Set",
+    "brand": "HeroForce",
+    "price": 44.99,
+    "salePrice": 39.99,
+    "description": "Set of 6 articulated superhero action figures with accessories. Each figure stands 6 inches tall with multiple points of articulation.",
+    "images": [
+      "https://images.unsplash.com/photo-1601814933824-fd0b574dd592?w=800",
+      "https://images.unsplash.com/photo-1593085512500-5d55148d6f0d?w=800"
+    ],
+    "ageMin": 4,
+    "ageMax": 10,
+    "category": "Action Figures & Playsets",
+    "subcategory": "Action Figures",
+    "dimensions": {
+      "length": 14,
+      "width": 10,
+      "height": 3
+    },
+    "weight": 1.5,
+    "material": "Durable plastic",
+    "stockQuantity": 28,
+    "isFeatured": true,
+    "sellerId": "seller2",
+    "rating": 4.6,
+    "reviewCount": 167,
+    "createdAt": "2024-01-22T15:10:00Z"
+  },
+  {
+    "Id": 9,
+    "name": "Board Game - Family Adventure",
+    "brand": "GameNight",
+    "price": 32.99,
+    "salePrice": null,
+    "description": "Strategy board game for 2-6 players. Navigate through exciting challenges and adventures. Average game time 45-60 minutes. Perfect for family game nights.",
+    "images": [
+      "https://images.unsplash.com/photo-1610890716171-6b1bb98ffd09?w=800",
+      "https://images.unsplash.com/photo-1632501641765-e568d28b0015?w=800"
+    ],
+    "ageMin": 8,
+    "ageMax": 99,
+    "category": "Board Games & Puzzles",
+    "subcategory": "Board Games",
+    "dimensions": {
+      "length": 11,
+      "width": 11,
+      "height": 2
+    },
+    "weight": 2.2,
+    "material": "Cardboard and plastic",
+    "stockQuantity": 41,
+    "isFeatured": false,
+    "sellerId": "seller3",
+    "rating": 4.9,
+    "reviewCount": 234,
+    "createdAt": "2024-01-30T12:45:00Z"
+  },
+  {
+    "Id": 10,
+    "name": "Soccer Ball - Youth Size",
+    "brand": "ActivePlay",
+    "price": 19.99,
+    "salePrice": null,
+    "description": "Official size 4 soccer ball for youth players. Durable synthetic leather construction. Suitable for both practice and games.",
+    "images": [
+      "https://images.unsplash.com/photo-1614632537423-1e6c2e7e0aae?w=800"
+    ],
+    "ageMin": 6,
+    "ageMax": 12,
+    "category": "Outdoor & Sports",
+    "subcategory": "Sports Equipment",
+    "dimensions": {
+      "length": 8,
+      "width": 8,
+      "height": 8
+    },
+    "weight": 0.4,
+    "material": "Synthetic leather",
+    "stockQuantity": 73,
+    "isFeatured": false,
+    "sellerId": "seller1",
+    "rating": 4.4,
+    "reviewCount": 56,
+    "createdAt": "2024-02-03T09:15:00Z"
+  },
+  {
+    "Id": 11,
+    "name": "Interactive Learning Tablet",
+    "brand": "SmartKids",
+    "price": 59.99,
+    "salePrice": 54.99,
+    "description": "Educational tablet with 100+ learning activities. Teaches letters, numbers, colors, and shapes through interactive games. Durable design with parental controls.",
+    "images": [
+      "https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=800",
+      "https://images.unsplash.com/photo-1530811761207-8d9d22f0a141?w=800"
+    ],
+    "ageMin": 3,
+    "ageMax": 7,
+    "category": "Electronic & Interactive",
+    "subcategory": "Learning Electronics",
+    "dimensions": {
+      "length": 9,
+      "width": 7,
+      "height": 1
+    },
+    "weight": 0.7,
+    "material": "Plastic and electronics",
+    "stockQuantity": 19,
+    "isFeatured": true,
+    "sellerId": "seller2",
+    "rating": 4.7,
+    "reviewCount": 178,
+    "createdAt": "2024-02-10T11:00:00Z"
+  },
+  {
+    "Id": 12,
+    "name": "Dinosaur Excavation Kit",
+    "brand": "JuniorScientist",
+    "price": 22.99,
+    "salePrice": null,
+    "description": "Dig up and assemble a realistic dinosaur skeleton. Includes excavation tools, brush, and educational booklet about dinosaurs. Great hands-on learning experience.",
+    "images": [
+      "https://images.unsplash.com/photo-1564760055775-d63b17a55c44?w=800",
+      "https://images.unsplash.com/photo-1551269901-5c5e14c25df7?w=800"
+    ],
+    "ageMin": 6,
+    "ageMax": 12,
+    "category": "Educational & STEM Toys",
+    "subcategory": "Science Kits",
+    "dimensions": {
+      "length": 10,
+      "width": 8,
+      "height": 3
+    },
+    "weight": 1.1,
+    "material": "Plaster and plastic",
+    "stockQuantity": 38,
+    "isFeatured": false,
+    "sellerId": "seller3",
+    "rating": 4.6,
+    "reviewCount": 103,
+    "createdAt": "2024-01-28T14:30:00Z"
+  }
+]
