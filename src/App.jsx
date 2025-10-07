@@ -1,17 +1,14 @@
-import { useState, useEffect } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
-import { motion, AnimatePresence } from "framer-motion";
-import Header from "@/components/organisms/Header";
-import HomePage from "@/components/pages/HomePage";
-import CatalogPage from "@/components/pages/CatalogPage";
-import ProductDetailPage from "@/components/pages/ProductDetailPage";
-import CartPage from "@/components/pages/CartPage";
+import { AnimatePresence, motion } from "framer-motion";
 import WishlistPage from "@/components/pages/WishlistPage";
-import SellerDashboard from "@/components/pages/SellerDashboard";
+import CatalogPage from "@/components/pages/CatalogPage";
+import HomePage from "@/components/pages/HomePage";
 import CheckoutPage from "@/components/pages/CheckoutPage";
-import DealsPage from "@/components/pages/DealsPage";
-
+import CartPage from "@/components/pages/CartPage";
+import ProductDetailPage from "@/components/pages/ProductDetailPage";
+import Header from "@/components/organisms/Header";
 function App() {
   const [cart, setCart] = useState([]);
   const [wishlist, setWishlist] = useState([]);
@@ -135,7 +132,7 @@ function App() {
                   />
                 }
               />
-              <Route
+<Route
                 path="/wishlist"
                 element={
                   <WishlistPage
@@ -145,20 +142,10 @@ function App() {
                   />
                 }
               />
-              <Route path="/seller" element={<SellerDashboard />} />
               <Route
                 path="/checkout"
                 element={
                   <CheckoutPage cart={cart} onClearCart={handleClearCart} />
-                }
-              />
-              <Route
-                path="/deals"
-                element={
-                  <DealsPage
-                    onAddToCart={handleAddToCart}
-                    onAddToWishlist={handleAddToWishlist}
-                  />
                 }
               />
             </Routes>

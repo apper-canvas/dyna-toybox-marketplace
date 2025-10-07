@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import ApperIcon from "@/components/ApperIcon";
@@ -108,29 +108,20 @@ const handleSearch = (query) => {
                 )}
               </div>
 
-              <Button
+<Button
                 variant="ghost"
                 onClick={() => navigate("/deals")}
                 className="text-gray-700"
               >
                 Deals
               </Button>
-
-              <Button
-                variant="ghost"
-                onClick={() => navigate("/seller")}
-                className="text-gray-700"
-              >
-                Sell
-              </Button>
             </nav>
-          </div>
 
-          <div className="hidden md:block flex-1 max-w-xl mx-8">
-            <SearchBar onSearch={handleSearch} />
-          </div>
+            <div className="hidden md:block flex-1 max-w-xl mx-8">
+              <SearchBar onSearch={handleSearch} />
+            </div>
 
-          <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2">
             <button
               onClick={() => navigate("/wishlist")}
               className="relative p-2 hover:bg-gray-100 rounded-lg transition-colors"
@@ -165,14 +156,14 @@ const handleSearch = (query) => {
             >
               <ApperIcon name={mobileMenuOpen ? "X" : "Menu"} className="w-6 h-6 text-gray-700" />
             </button>
+</button>
           </div>
-        </div>
-
-        <div className="md:hidden py-3 border-t border-gray-200">
-          <SearchBar onSearch={handleSearch} />
         </div>
       </div>
 
+      <div className="md:hidden py-3 border-t border-gray-200">
+        <SearchBar onSearch={handleSearch} />
+      </div>
       {mobileMenuOpen && (
         <motion.div
           initial={{ opacity: 0, height: 0 }}
@@ -207,20 +198,28 @@ const handleSearch = (query) => {
                 navigate("/deals");
                 setMobileMenuOpen(false);
               }}
-              className="w-full justify-start text-gray-700"
+className="w-full justify-start text-gray-700"
             >
               Deals
             </Button>
-            <Button
-              variant="ghost"
-              onClick={() => {
-                navigate("/seller");
-                setMobileMenuOpen(false);
-              }}
-              className="w-full justify-start text-gray-700"
-            >
-              Sell
-            </Button>
+
+            <div className="border-t border-gray-200 pt-4 mt-4">
+              <p className="text-sm text-gray-500 px-3">Categories</p>
+              {categories.map((category) => (
+                <Button
+                  key={category.name}
+                  variant="ghost"
+                  onClick={() => {
+                    navigate(`/catalog?category=${encodeURIComponent(category.name)}`);
+                    setMobileMenuOpen(false);
+                  }}
+                  className="w-full justify-start text-gray-700 gap-3"
+                >
+                  <ApperIcon name={category.icon} className="w-5 h-5" />
+                  {category.name}
+                </Button>
+              ))}
+            </div>
           </nav>
         </motion.div>
       )}
