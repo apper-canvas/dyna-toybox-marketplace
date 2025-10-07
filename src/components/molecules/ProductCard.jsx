@@ -36,7 +36,7 @@ const ProductCard = ({ product, onAddToCart, onAddToWishlist }) => {
           </Badge>
           {hasDiscount && (
             <Badge variant="error" className="bg-gradient-to-r from-error to-pink-500 text-white">
-              SALE
+SALE
             </Badge>
           )}
           {product.isFeatured && (

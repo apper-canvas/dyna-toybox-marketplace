@@ -8,7 +8,8 @@ const Badge = ({ children, variant = "default", className }) => {
     success: "bg-success/10 text-success",
     warning: "bg-warning/10 text-warning",
     error: "bg-error/10 text-error",
-    age: "bg-gradient-to-r from-primary/20 to-secondary/20 text-primary font-semibold"
+age: "bg-gradient-to-r from-primary/20 to-secondary/20 text-primary font-semibold",
+    deal: "bg-gradient-to-r from-error to-warning text-white font-bold animate-pulse-badge shadow-lg"
   };
 
   return (

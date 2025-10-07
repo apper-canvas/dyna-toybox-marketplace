@@ -1,5 +1,5 @@
 import productsData from "@/services/mockData/products.json";
-
+const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
 let products = [...productsData];
@@ -22,6 +22,11 @@ const productService = {
   async getFeatured() {
     await delay(250);
     return products.filter(p => p.isFeatured).map(p => ({ ...p }));
+},
+  
+  getDeals: async () => {
+    await delay(300);
+    return productsData.filter(product => product.salePrice !== null);
   },
 
   async getByCategory(category) {

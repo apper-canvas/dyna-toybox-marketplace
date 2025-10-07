@@ -1,31 +1,35 @@
-import { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import productService from "@/services/api/productService";
-import HeroSection from "@/components/organisms/HeroSection";
-import ProductGrid from "@/components/organisms/ProductGrid";
-import CategoryCard from "@/components/molecules/CategoryCard";
-import Loading from "@/components/ui/Loading";
-import Error from "@/components/ui/Error";
 import ApperIcon from "@/components/ApperIcon";
+import CategoryCard from "@/components/molecules/CategoryCard";
+import Error from "@/components/ui/Error";
+import Loading from "@/components/ui/Loading";
+import ProductGrid from "@/components/organisms/ProductGrid";
+import HeroSection from "@/components/organisms/HeroSection";
+import FeaturedDeals from "@/components/organisms/FeaturedDeals";
 import Button from "@/components/atoms/Button";
+import productService from "@/services/api/productService";
 
 const HomePage = ({ onAddToCart, onAddToWishlist }) => {
   const navigate = useNavigate();
-  const [featuredProducts, setFeaturedProducts] = useState([]);
+const [featuredProducts, setFeaturedProducts] = useState([]);
+  const [featuredDeals, setFeaturedDeals] = useState([]);
   const [allProducts, setAllProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  const loadProducts = async () => {
+const loadProducts = async () => {
     try {
       setLoading(true);
       setError(null);
-      const [featured, all] = await Promise.all([
+      const [featured, deals, all] = await Promise.all([
         productService.getFeatured(),
+        productService.getDeals(),
         productService.getAll()
       ]);
       setFeaturedProducts(featured.slice(0, 8));
+      setFeaturedDeals(deals);
       setAllProducts(all);
     } catch (err) {
       setError(err.message);
@@ -60,7 +64,22 @@ const HomePage = ({ onAddToCart, onAddToWishlist }) => {
   return (
     <div className="space-y-16 pb-16">
       <HeroSection />
-
+{/* Featured Deals Section */}
+      {featuredDeals.length > 0 && (
+        <section className="mb-16">
+          <div className="flex items-center justify-between mb-8">
+            <h2 className="text-3xl font-display font-bold text-gray-900 flex items-center gap-3">
+              <span className="text-4xl">🔥</span>
+              Hot Deals
+            </h2>
+          </div>
+          <FeaturedDeals 
+            products={featuredDeals}
+            onAddToCart={onAddToCart}
+            onAddToWishlist={onAddToWishlist}
+          />
+        </section>
+      )}
       <section>
         <div className="flex items-center justify-between mb-8">
           <div>
