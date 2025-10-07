@@ -6,7 +6,6 @@
 
 @layer base {
   * {
-    @apply border-border;
   }
   body {
     @apply bg-background text-gray-900 font-body antialiased;
