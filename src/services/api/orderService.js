@@ -11,6 +11,22 @@ const orderService = {
   },
 
   async getById(id) {
+    await delay(300);
+    
+    if (!Number.isInteger(id)) {
+      throw new Error('Order ID must be an integer');
+    }
+
+    const order = orders.find(o => o.Id === id);
+    
+    if (!order) {
+      throw new Error(`Order with ID ${id} not found`);
+    }
+
+    return { ...order };
+  },
+
+  async getById(id) {
     await delay(200);
     const order = orders.find(o => o.Id === parseInt(id));
     if (!order) {

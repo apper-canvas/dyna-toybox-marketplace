@@ -8,6 +8,8 @@ import HomePage from "@/components/pages/HomePage";
 import CheckoutPage from "@/components/pages/CheckoutPage";
 import CartPage from "@/components/pages/CartPage";
 import ProductDetailPage from "@/components/pages/ProductDetailPage";
+import OrdersPage from "@/components/pages/OrdersPage";
+import OrderDetailPage from "@/components/pages/OrderDetailPage";
 import Header from "@/components/organisms/Header";
 function App() {
   const [cart, setCart] = useState([]);
@@ -93,7 +95,7 @@ function App() {
         
         <main className="max-w-7xl mx-auto px-4 py-8">
           <AnimatePresence mode="wait">
-            <Routes>
+<Routes>
               <Route
                 path="/"
                 element={
@@ -132,7 +134,7 @@ function App() {
                   />
                 }
               />
-<Route
+              <Route
                 path="/wishlist"
                 element={
                   <WishlistPage
@@ -141,6 +143,14 @@ function App() {
                     onRemoveFromWishlist={handleAddToWishlist}
                   />
                 }
+              />
+              <Route
+                path="/orders"
+                element={<OrdersPage />}
+              />
+              <Route
+                path="/orders/:id"
+                element={<OrderDetailPage />}
               />
               <Route
                 path="/checkout"

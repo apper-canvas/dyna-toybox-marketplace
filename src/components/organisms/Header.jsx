@@ -61,7 +61,7 @@ const handleSearch = (query) => {
                 </button>
                 <nav className="hidden lg:flex items-center gap-1">
                     <Button variant="ghost" onClick={() => navigate("/")} className="text-gray-700">Home
-                                      </Button>
+</Button>
                     <div
                         className="relative"
                         onMouseEnter={() => setShowCategories(true)}
@@ -100,6 +100,11 @@ const handleSearch = (query) => {
                         variant="ghost"
                         onClick={() => navigate("/deals")}
                         className="text-gray-700">Deals
+                                      </Button>
+                    <Button
+                        variant="ghost"
+                        onClick={() => navigate("/orders")}
+                        className="text-gray-700">Orders
                                       </Button>
                 </nav>
                 <div className="hidden md:block flex-1 max-w-xl mx-8">
@@ -155,7 +160,7 @@ const handleSearch = (query) => {
                 height: 0
             }}
             className="lg:hidden border-t border-gray-200 bg-white">
-            <nav className="max-w-7xl mx-auto px-4 py-4 space-y-2">
+<nav className="max-w-7xl mx-auto px-4 py-4 space-y-2">
                 <Button
                     variant="ghost"
                     onClick={() => {
@@ -179,6 +184,14 @@ const handleSearch = (query) => {
                         setMobileMenuOpen(false);
                     }}
                     className="w-full justify-start text-gray-700">Deals
+                                </Button>
+                <Button
+                    variant="ghost"
+                    onClick={() => {
+                        navigate("/orders");
+                        setMobileMenuOpen(false);
+                    }}
+                    className="w-full justify-start text-gray-700">Orders
                                 </Button>
                 <div className="border-t border-gray-200 pt-4 mt-4">
                     <p className="text-sm text-gray-500 px-3">Categories</p>
