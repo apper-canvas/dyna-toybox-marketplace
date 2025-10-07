@@ -1,36 +1,38 @@
-import { useState, useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import { motion } from "framer-motion";
 import { toast } from "react-toastify";
 import { format } from "date-fns";
-import productService from "@/services/api/productService";
-import reviewService from "@/services/api/reviewService";
-import Loading from "@/components/ui/Loading";
-import Error from "@/components/ui/Error";
+import ProductCarousel from "@/components/atoms/ProductCarousel";
 import ApperIcon from "@/components/ApperIcon";
+import Error from "@/components/ui/Error";
+import Loading from "@/components/ui/Loading";
 import Badge from "@/components/atoms/Badge";
 import Button from "@/components/atoms/Button";
-
+import productService from "@/services/api/productService";
+import reviewService from "@/services/api/reviewService";
 const ProductDetailPage = ({ onAddToCart, onAddToWishlist }) => {
   const { id } = useParams();
   const navigate = useNavigate();
   const [product, setProduct] = useState(null);
   const [reviews, setReviews] = useState([]);
+  const [similarProducts, setSimilarProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [selectedImage, setSelectedImage] = useState(0);
   const [quantity, setQuantity] = useState(1);
-
-  const loadProductData = async () => {
+const loadProductData = async () => {
     try {
       setLoading(true);
       setError(null);
-      const [productData, reviewsData] = await Promise.all([
+      const [productData, reviewsData, similarProductsData] = await Promise.all([
         productService.getById(id),
-        reviewService.getByProductId(id)
+        reviewService.getByProductId(id),
+        productService.getSimilarProducts(id, 4)
       ]);
       setProduct(productData);
       setReviews(reviewsData);
+      setSimilarProducts(similarProductsData);
     } catch (err) {
       setError(err.message);
       toast.error("Failed to load product details");
@@ -42,7 +44,6 @@ const ProductDetailPage = ({ onAddToCart, onAddToWishlist }) => {
   useEffect(() => {
     loadProductData();
   }, [id]);
-
   const handleAddToCart = () => {
     for (let i = 0; i < quantity; i++) {
       onAddToCart(product);
@@ -291,9 +292,21 @@ const ProductDetailPage = ({ onAddToCart, onAddToWishlist }) => {
                 Helpful ({review.helpfulCount})
               </button>
             </div>
-          ))}
+))}
         </div>
       </div>
+
+      {/* Similar Products Carousel */}
+      {similarProducts.length > 0 && (
+        <div className="mt-12">
+          <ProductCarousel
+            products={similarProducts}
+            title="Similar Products You May Like"
+            onAddToCart={onAddToCart}
+            onAddToWishlist={onAddToWishlist}
+          />
+        </div>
+      )}
     </div>
   );
 };

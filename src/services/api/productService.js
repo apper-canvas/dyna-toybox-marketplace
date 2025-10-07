@@ -1,4 +1,5 @@
 import productsData from "@/services/mockData/products.json";
+
 const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
 let products = [...productsData];
@@ -79,4 +80,58 @@ const productService = {
   }
 };
 
-export default productService;
+const getSimilarProducts = async (productId, limit = 4) => {
+  await delay(300);
+  const product = products.find(p => p.Id === parseInt(productId));
+  if (!product) return [];
+
+  // Find similar products based on category and price range
+  const similar = products
+    .filter(p => {
+      if (p.Id === product.Id) return false;
+      const sameCategoryOrTag = 
+        p.category === product.category ||
+        p.tags?.some(tag => product.tags?.includes(tag));
+      const similarPrice = Math.abs(p.price - product.price) < product.price * 0.5;
+      return sameCategoryOrTag || similarPrice;
+    })
+    .sort((a, b) => {
+      // Prioritize same category, then price similarity
+      const aCategoryMatch = a.category === product.category ? 1 : 0;
+      const bCategoryMatch = b.category === product.category ? 1 : 0;
+      if (aCategoryMatch !== bCategoryMatch) return bCategoryMatch - aCategoryMatch;
+      return Math.abs(a.price - product.price) - Math.abs(b.price - product.price);
+    })
+    .slice(0, limit);
+
+  return similar.map(p => ({ ...p }));
+};
+
+const getFrequentlyBoughtTogether = async (productIds, limit = 4) => {
+  await delay(300);
+  if (!productIds || productIds.length === 0) return [];
+
+  // Get categories of cart items
+  const cartProducts = products.filter(p => productIds.includes(p.Id));
+  const cartCategories = [...new Set(cartProducts.map(p => p.category))];
+  const cartTags = [...new Set(cartProducts.flatMap(p => p.tags || []))];
+
+  // Find complementary products (different category but related tags)
+  const recommendations = products
+    .filter(p => {
+      if (productIds.includes(p.Id)) return false;
+      const hasRelatedTag = p.tags?.some(tag => cartTags.includes(tag));
+      const differentCategory = !cartCategories.includes(p.category);
+      return hasRelatedTag || (!differentCategory && Math.random() > 0.5);
+    })
+    .sort(() => Math.random() - 0.5)
+    .slice(0, limit);
+
+  return recommendations.map(p => ({ ...p }));
+};
+
+export default {
+  ...productService,
+  getSimilarProducts,
+  getFrequentlyBoughtTogether
+};

@@ -1,24 +1,35 @@
-import { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { motion, AnimatePresence } from "framer-motion";
-import productService from "@/services/api/productService";
-import CartItem from "@/components/molecules/CartItem";
-import Button from "@/components/atoms/Button";
+import { AnimatePresence, motion } from "framer-motion";
+import ProductCarousel from "@/components/atoms/ProductCarousel";
 import ApperIcon from "@/components/ApperIcon";
+import CartItem from "@/components/molecules/CartItem";
 import Empty from "@/components/ui/Empty";
 import Loading from "@/components/ui/Loading";
-
+import Button from "@/components/atoms/Button";
+import productService from "@/services/api/productService";
 const CartPage = ({ cart, onUpdateQuantity, onRemove, onClearCart }) => {
   const navigate = useNavigate();
   const [products, setProducts] = useState([]);
+  const [recommendations, setRecommendations] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const loadProducts = async () => {
+const loadProducts = async () => {
       try {
         setLoading(true);
         const allProducts = await productService.getAll();
         setProducts(allProducts);
+
+        // Load recommendations based on cart items
+        if (cart.length > 0) {
+          const cartProductIds = cart.map(item => item.productId);
+          const recommendedProducts = await productService.getFrequentlyBoughtTogether(
+            cartProductIds,
+            4
+          );
+          setRecommendations(recommendedProducts);
+        }
       } catch (err) {
         console.error("Failed to load products:", err);
       } finally {
@@ -27,7 +38,7 @@ const CartPage = ({ cart, onUpdateQuantity, onRemove, onClearCart }) => {
     };
 
     loadProducts();
-  }, []);
+  }, [cart]);
 
   const getProduct = (productId) => {
     return products.find(p => p.Id === productId);
@@ -61,7 +72,7 @@ const CartPage = ({ cart, onUpdateQuantity, onRemove, onClearCart }) => {
     );
   }
 
-  return (
+return (
     <div className="max-w-6xl mx-auto">
       <div className="mb-8">
         <h1 className="text-3xl font-display font-bold text-gray-900 mb-2">
@@ -165,6 +176,20 @@ const CartPage = ({ cart, onUpdateQuantity, onRemove, onClearCart }) => {
           </div>
         </div>
       </div>
+
+      {/* Frequently Bought Together Carousel */}
+      {recommendations.length > 0 && (
+        <div className="mt-8">
+          <ProductCarousel
+            products={recommendations}
+            title="Frequently Bought Together"
+            onAddToCart={(product) => {
+              onUpdateQuantity(product.Id, 1);
+            }}
+            onAddToWishlist={() => {}}
+          />
+        </div>
+      )}
     </div>
   );
 };
