@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import ApperIcon from "@/components/ApperIcon";
@@ -6,9 +6,10 @@ import SearchBar from "@/components/molecules/SearchBar";
 import Button from "@/components/atoms/Button";
 
 const Header = ({ cartCount = 0, wishlistCount = 0 }) => {
-  const navigate = useNavigate();
+const navigate = useNavigate();
   const [showCategories, setShowCategories] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isScrolling, setIsScrolling] = useState(false);
 
   const categories = [
     { name: "Action Figures & Playsets", icon: "Sword" },
@@ -21,10 +22,29 @@ const Header = ({ cartCount = 0, wishlistCount = 0 }) => {
     { name: "Electronic & Interactive", icon: "Gamepad2" }
   ];
 
-  const handleSearch = (query) => {
+const handleSearch = (query) => {
     navigate(`/catalog?search=${encodeURIComponent(query)}`);
   };
 
+  useEffect(() => {
+    let scrollTimeout;
+    
+    const handleScroll = () => {
+      setIsScrolling(true);
+      
+      clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(() => {
+        setIsScrolling(false);
+      }, 150);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      clearTimeout(scrollTimeout);
+    };
+  }, []);
   return (
     <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-sm shadow-md">
       <div className="max-w-7xl mx-auto px-4">
@@ -61,11 +81,11 @@ const Header = ({ cartCount = 0, wishlistCount = 0 }) => {
                   <ApperIcon name="ChevronDown" className="w-4 h-4 ml-1" />
                 </Button>
 
-                {showCategories && (
+{showCategories && (
                   <motion.div
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className="absolute top-full left-0 mt-2 w-96 bg-white rounded-lg shadow-xl border border-gray-200 p-4 grid grid-cols-2 gap-2"
+                    className={`absolute top-full left-0 mt-2 w-96 bg-white rounded-lg shadow-xl border border-gray-200 p-4 grid grid-cols-2 gap-2 ${isScrolling ? 'pointer-events-none' : ''}`}
                   >
                     {categories.map((category) => (
                       <button
